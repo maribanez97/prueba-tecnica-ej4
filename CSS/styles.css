@@ -1,0 +1,50 @@
+
+/* Formateo de parametros predefinidos */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Layout principal */
+
+.Contenedor {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5em;
+    background-color: rgba(29, 29, 29, 1);
+}
+
+/* Estilos de la lista */
+
+.Lista {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.3em;
+}
+
+.ListaItem { 
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.3em;
+    color: white;
+}
+
+.ListaItem-titulo {
+    font-size: 3em;
+    cursor: pointer;
+}
+
+.ListaItem-subtitulo {
+    font-size: 0.7em;
+    font-style: italic;
+}
