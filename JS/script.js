@@ -1,7 +1,8 @@
 // Declaramos constantes y variables
 const contenedor = document.querySelector('#Contenedor');
 const contenedorLista = document.querySelector('#Lista');
-
+const titulos = document.querySelectorAll('.ListaItem');
+const Body = document.querySelector('.Body');
 
 const listaProyectos = [
     {
@@ -68,36 +69,63 @@ const listaProyectos = [
 ]
 
 console.log(listaProyectos);
-console.log(listaProyectos.src);
+console.log(listaProyectos[0].src);
 
 
 // Funciones y métodos
-function imprimirLista() {
-    listaProyectos.forEach((item, i) => {
-        let proyecto = item.proyecto;
-        let empresa = item.empresa;
-        let imagen = item.img;
-        contenedorLista.innerHTML += `<li class="ListaItem">
-                                        <h3 id="ListaItem-titulo" class="ListaItem-titulo">${proyecto}</h3>
-                                        <p class="ListaItem-subtitulo">${empresa}</p>
-                                    </li>`
+// function imprimirLista() {
+//     listaProyectos.forEach((item, i) => {
+//         let proyecto = item.proyecto;
+//         let empresa = item.empresa;
+//         // let imagen = item.src;
+//         contenedorLista.innerHTML += `<li class="ListaItem">
+//                                         <h3 id="ListaItem-titulo" class="ListaItem-titulo">${proyecto}</h3>
+//                                         <p class="ListaItem-subtitulo">${empresa}</p>
+//                                     </li>`
+//     });
+// };
+
+function removeOpacity(){
+    titulos.forEach(titulo => {
+        titulo.classList.remove('u-opacity');
+        contenedor.style.background = 'rgba(29, 29, 29, 0.5)';
     });
-};
+}
 
-// function verImagen() {
-    const titulo = document.querySelectorAll('#ListaItem-titulo');
+function addOpacity(){
+    titulos.forEach(titulo => {
+        titulo.classList.add('u-opacity');
+        contenedor.style.background = 'rgba(29, 29, 29, 1)';
+    });
+}
 
-    titulo.forEach((itemTitulo,i) => {
-        itemTitulo.addEventListener('mouseenter', () => {
-            let imagen = listaProyectos.img;
-                console.log(`La imagen que corresponde es:${imagen}`);
-            });
+function verImagen() {
+    const listaImagenes = listaProyectos.map(proyecto => proyecto.src);
+    listaImagenes.forEach((imagen, i) => {
+        console.log(`${imagen}, ${i}`);
+            Body.style.background = `url(./img/${imagen})`;
+    });
+}
 
-        });
-// }
 
+
+//EventListeners
+titulos.forEach(titulo => {
+    titulo.addEventListener('mouseover', () => {
+        removeOpacity();
+        verImagen();
+    });
+});
+
+// titulos.forEach(titulo => {
+    contenedorLista.addEventListener('mouseout', () => {
+        // verImagen();
+        // addOpacity();
+        addOpacity();
+    });
+// });
 // Inicializar código
-imprimirLista();
+// imprimirLista();
 
 
 
