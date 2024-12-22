@@ -1,8 +1,9 @@
 // Declaramos constantes y variables
-const contenedor = document.querySelector('#Contenedor');
+const contenedor = document.querySelector('#ContenedorLista');
 const contenedorLista = document.querySelector('#Lista');
 const titulos = document.querySelectorAll('.ListaItem');
 const Body = document.querySelector('.Body');
+const contenedorImg = document.querySelector('#ContenedorImagen');
 
 const listaProyectos = [
     {
@@ -14,13 +15,13 @@ const listaProyectos = [
     }, {
         id: 2,
         proyecto: "Coach2o",
-        empresa: "Reebok",
-        src: "Font Vella.jpg",
+        empresa: "Font Vella",
+        src: "fontvella.jpg",
         alt: "imagen 2"
     }, {
         id: 3,
-        proyecto: "ZPump Urban Fit",
-        empresa: "Reebok",
+        proyecto: "RCar",
+        empresa: "Revista Car",
         src: "car.jpg",
         alt: "imagen 3"
     }, {
@@ -100,10 +101,19 @@ function addOpacity(){
 }
 
 function verImagen() {
-    const listaImagenes = listaProyectos.map(proyecto => proyecto.src);
-    listaImagenes.forEach((imagen, i) => {
-        console.log(`${imagen}, ${i}`);
-            Body.style.background = `url(./img/${imagen})`;
+    const idListaProyectos = listaProyectos.map(item => item.id);
+    console.log(idListaProyectos);
+    listaProyectos.forEach((proyecto, i) => {
+        if (proyecto.id === i+1){
+            const imagen = proyecto.src;
+            console.log(`proyecto: ${proyecto.proyecto} imagen: ${imagen}`);
+            
+            titulos.forEach(titulo => {
+                contenedorImg.innerHTML = `<img src="./img/${imagen}" alt="${proyecto.alt}" class="Imagen">`;
+                contenedorImg.classList.add('isVisible');
+
+            });
+        }
     });
 }
 
@@ -125,7 +135,7 @@ titulos.forEach(titulo => {
     });
 // });
 // Inicializar código
-// imprimirLista();
+// verImagen();
 
 
 
