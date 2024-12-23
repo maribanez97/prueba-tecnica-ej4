@@ -99,7 +99,6 @@ function addOpacity(){
 
 function verImagen(index) {
     const proyecto = listaProyectos[index];
-       let alt = listaProyectos[index].alt;
             contenedorImg.innerHTML = `<img src="./img/${proyecto.src}" alt="${proyecto.alt}" class="Imagen">`;
             contenedorImg.classList.add('isVisible');
 }
